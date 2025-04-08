@@ -18,3 +18,9 @@ class LoginPage:
 
     def get_error_message(self):
         return self.driver.find_element(*LoginLocators.ERROR_MESSAGE).text
+    
+    def get_error_email_required(self):
+        return self.driver.find_element(*LoginLocators.ERROR_REQUIRED_EMAIL).text
+    
+    def get_error_password_required(self):
+        return self.driver.find_element(*LoginLocators.ERROR_REQUIRED_PASSWORD).text

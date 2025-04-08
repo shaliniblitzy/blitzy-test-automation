@@ -12,6 +12,16 @@ def test_login_invalid_credentials(browser, config, credentials):
     
     assert "invalid" in login_page.get_error_message().lower()
 
+def test_login_blank_credentials(browser, config, credentials):
+    login_page = LoginPage(browser)
+    login_page.load(config["base_url"] + 'sign-in')
+    
+    login_page.enter_email(credentials["blank"]["email"])
+    login_page.enter_password(credentials["blank"]["password"])
+    login_page.click_login()
+    
+    assert "email is required" in login_page.get_error_email_required().lower()
+
 def test_login_valid_credentials(browser, config, credentials):
     login_page = LoginPage(browser)
     login_page.load(config["base_url"] + 'sign-in')
